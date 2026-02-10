@@ -27,7 +27,7 @@ void TriggerPadComponent::paint (juce::Graphics& g)
     }
 
     g.setColour (isPressed ? accent : Colours::text);
-    g.setFont (juce::Font (juce::Font::getDefaultMonospacedFontName(), 11.0f, juce::Font::bold));
+    g.setFont (juce::Font (juce::FontOptions (juce::Font::getDefaultMonospacedFontName(), 11.0f, juce::Font::bold)));
     g.drawText (partName, bounds, juce::Justification::centred);
 }
 

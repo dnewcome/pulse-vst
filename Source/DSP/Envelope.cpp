@@ -76,7 +76,7 @@ void Envelope::advanceStage()
             currentLevel = 0.0f;
             break;
 
-        default:
+        case Stage::Idle:
             break;
     }
 }

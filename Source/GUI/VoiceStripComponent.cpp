@@ -162,10 +162,10 @@ void VoiceStripComponent::paint (juce::Graphics& g)
     // Header
     auto headerArea = inner.removeFromTop (24);
     g.setColour (accent);
-    g.setFont (juce::Font (monoFont, 12.0f, juce::Font::bold));
+    g.setFont (juce::Font (juce::FontOptions (monoFont, 12.0f, juce::Font::bold)));
     g.drawText (Constants::PART_NAMES[partIndex], headerArea, juce::Justification::centredLeft);
     g.setColour (Colours::textMuted);
-    g.setFont (juce::Font (monoFont, 8.0f, juce::Font::plain));
+    g.setFont (juce::Font (juce::FontOptions (monoFont, 8.0f, juce::Font::plain)));
     g.drawText ("CH " + juce::String (partIndex + 1), headerArea, juce::Justification::centredRight);
     g.setColour (Colours::stripBorder);
     g.drawLine (inner.getX(), headerArea.getBottom(), inner.getRight(), headerArea.getBottom(), 1.0f);
@@ -174,7 +174,7 @@ void VoiceStripComponent::paint (juce::Graphics& g)
     auto paintSectionLabel = [&](float y, const juce::String& text)
     {
         g.setColour (accent);
-        g.setFont (juce::Font (monoFont, 9.0f, juce::Font::bold));
+        g.setFont (juce::Font (juce::FontOptions (monoFont, 9.0f, juce::Font::bold)));
         g.drawText (text, inner.getX(), (int) y, (int) inner.getWidth(), 14, juce::Justification::centredLeft);
     };
 
@@ -208,13 +208,13 @@ void VoiceStripComponent::paint (juce::Graphics& g)
             g.setColour (Colours::textMuted);
         }
 
-        g.setFont (juce::Font (monoFont, 8.0f, juce::Font::plain));
+        g.setFont (juce::Font (juce::FontOptions (monoFont, 8.0f, juce::Font::plain)));
         g.drawText ("ENV " + juce::String (i + 1), tabBounds, juce::Justification::centred);
     }
 
     // Aftertouch label
     g.setColour (Colours::textMuted);
-    g.setFont (juce::Font (monoFont, 8.0f, juce::Font::plain));
+    g.setFont (juce::Font (juce::FontOptions (monoFont, 8.0f, juce::Font::plain)));
 
     // Mute/Solo styling
     auto styleMuteSolo = [this](juce::TextButton& btn, const juce::String& /*label*/, bool active, juce::Colour colour)

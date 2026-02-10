@@ -14,7 +14,7 @@ void SampleSlotComponent::paint (juce::Graphics& g)
     g.setColour (isDragOver ? accent.withAlpha (0.5f) : Colours::stripBorder);
     g.drawRoundedRectangle (bounds, 4.0f, 1.0f);
 
-    auto monoFont = juce::Font (juce::Font::getDefaultMonospacedFontName(), 8.0f, juce::Font::plain);
+    auto monoFont = juce::Font (juce::FontOptions (juce::Font::getDefaultMonospacedFontName(), 8.0f, juce::Font::plain));
 
     // Label
     g.setColour (Colours::textMuted);
@@ -28,13 +28,13 @@ void SampleSlotComponent::paint (juce::Graphics& g)
     if (isLoaded)
     {
         g.setColour (accent);
-        g.setFont (juce::Font (juce::Font::getDefaultMonospacedFontName(), 9.0f, juce::Font::plain));
+        g.setFont (juce::Font (juce::FontOptions (juce::Font::getDefaultMonospacedFontName(), 9.0f, juce::Font::plain)));
         g.drawText (sampleName, nameArea, juce::Justification::centredLeft);
     }
     else
     {
         g.setColour (Colours::textMuted);
-        g.setFont (juce::Font (juce::Font::getDefaultMonospacedFontName(), 9.0f, juce::Font::italic));
+        g.setFont (juce::Font (juce::FontOptions (juce::Font::getDefaultMonospacedFontName(), 9.0f, juce::Font::italic)));
         g.drawText ("Drop sample...", nameArea, juce::Justification::centredLeft);
     }
 }

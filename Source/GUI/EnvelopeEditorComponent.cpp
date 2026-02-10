@@ -153,7 +153,7 @@ void EnvelopeEditorComponent::paint (juce::Graphics& g)
     float r = releaseParam ? releaseParam->convertFrom0to1 (releaseParam->getValue()) : 0.4f;
 
     g.setColour (Colours::textMuted);
-    g.setFont (juce::Font (juce::Font::getDefaultMonospacedFontName(), 8.0f, juce::Font::plain));
+    g.setFont (juce::Font (juce::FontOptions (juce::Font::getDefaultMonospacedFontName(), 8.0f, juce::Font::plain)));
     juce::String text = "A:" + juce::String (a, 2) + " D:" + juce::String (d, 2)
                       + " S:" + juce::String (s, 2) + " R:" + juce::String (r, 2);
     g.drawText (text, juce::Rectangle<float> (padding, h - 12, w - padding * 2, 12),

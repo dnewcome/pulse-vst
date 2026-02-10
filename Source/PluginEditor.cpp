@@ -32,7 +32,7 @@ void PulsePluginEditor::paint (juce::Graphics& g)
 
     auto monoFont = juce::Font::getDefaultMonospacedFontName();
     g.setColour (Colours::textMuted);
-    g.setFont (juce::Font (monoFont, 8.0f, juce::Font::plain));
+    g.setFont (juce::Font (juce::FontOptions (monoFont, 8.0f, juce::Font::plain)));
     g.drawText ("MIDI: MULTITIMBRAL CH 1-4    AFTERTOUCH: CHANNEL PRESSURE    POLYPHONY: 4-VOICE",
                 footerArea.reduced (20, 0).toNearestInt(), juce::Justification::centredLeft);
     g.drawText ("v0.1.0", footerArea.reduced (20, 0).toNearestInt(), juce::Justification::centredRight);

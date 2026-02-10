@@ -80,6 +80,6 @@ void KnobComponent::paint (juce::Graphics& g)
 
     // Label
     g.setColour (Colours::textDim);
-    g.setFont (juce::Font (juce::Font::getDefaultMonospacedFontName(), 9.0f, juce::Font::plain));
+    g.setFont (juce::Font (juce::FontOptions (juce::Font::getDefaultMonospacedFontName(), 9.0f, juce::Font::plain)));
     g.drawText (labelText.toUpperCase(), labelArea, juce::Justification::centredTop);
 }

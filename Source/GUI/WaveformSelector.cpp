@@ -25,7 +25,7 @@ void WaveformSelector::paint (juce::Graphics& g)
     float itemWidth = (float) bounds.getWidth() / (float) numItems;
     float gap = 4.0f;
 
-    auto monoFont = juce::Font (juce::Font::getDefaultMonospacedFontName(), 8.0f, juce::Font::plain);
+    auto monoFont = juce::Font (juce::FontOptions (juce::Font::getDefaultMonospacedFontName(), 8.0f, juce::Font::plain));
     g.setFont (monoFont);
 
     for (int i = 0; i < numItems; ++i)

@@ -15,17 +15,17 @@ void HeaderComponent::paint (juce::Graphics& g)
 
     // Title
     g.setColour (Colours::text);
-    g.setFont (juce::Font (monoFont, 16.0f, juce::Font::bold));
+    g.setFont (juce::Font (juce::FontOptions (monoFont, 16.0f, juce::Font::bold)));
     g.drawText ("PULSE", 20, 0, 100, (int) bounds.getHeight(), juce::Justification::centredLeft);
 
     // Subtitle
     g.setColour (Colours::textDim);
-    g.setFont (juce::Font (monoFont, 9.0f, juce::Font::plain));
+    g.setFont (juce::Font (juce::FontOptions (monoFont, 9.0f, juce::Font::plain)));
     g.drawText ("DRUM SYNTH", 110, 0, 100, (int) bounds.getHeight(), juce::Justification::centredLeft);
 
     // Right side info
     g.setColour (Colours::textMuted);
-    g.setFont (juce::Font (monoFont, 8.0f, juce::Font::plain));
+    g.setFont (juce::Font (juce::FontOptions (monoFont, 8.0f, juce::Font::plain)));
     juce::String info = juce::String::fromUTF8("4-VOICE HYBRID \xe2\x80\xa2 SAMPLE + SYNTH");
     g.drawText (info, bounds.reduced (20, 0).toNearestInt(), juce::Justification::centredRight);
 

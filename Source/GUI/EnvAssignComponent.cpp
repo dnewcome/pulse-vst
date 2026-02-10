@@ -29,7 +29,7 @@ void EnvAssignComponent::paint (juce::Graphics& g)
     auto inner = bounds.reduced (6, 4);
 
     // Label
-    auto monoFont = juce::Font (juce::Font::getDefaultMonospacedFontName(), 8.0f, juce::Font::plain);
+    auto monoFont = juce::Font (juce::FontOptions (juce::Font::getDefaultMonospacedFontName(), 8.0f, juce::Font::plain));
     g.setColour (Colours::textMuted);
     g.setFont (monoFont);
     g.drawText (juce::String::fromUTF8("ASSIGN \xe2\x86\x92 ENV ") + juce::String (selectedEnv + 1),
