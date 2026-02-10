@@ -1,0 +1,108 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone JUCE
+        run: git clone --depth 1 --branch 7.0.12 https://github.com/juce-framework/JUCE.git
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libasound2-dev \
+            libfreetype-dev \
+            libx11-dev \
+            libxcomposite-dev \
+            libxcursor-dev \
+            libxinerama-dev \
+            libxrandr-dev \
+            libxrender-dev \
+            libwebkit2gtk-4.1-dev \
+            libcurl4-openssl-dev \
+            pkg-config
+
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build -j$(nproc)
+
+      - name: Upload VST3
+        uses: actions/upload-artifact@v4
+        with:
+          name: PulseDrumSynth-Linux-VST3
+          path: build/PulseDrumSynth_artefacts/Release/VST3/
+
+      - name: Upload Standalone
+        uses: actions/upload-artifact@v4
+        with:
+          name: PulseDrumSynth-Linux-Standalone
+          path: build/PulseDrumSynth_artefacts/Release/Standalone/
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone JUCE
+        run: git clone --depth 1 --branch 7.0.12 https://github.com/juce-framework/JUCE.git
+
+      - name: Configure
+        run: cmake -B build -G "Visual Studio 17 2022" -A x64
+
+      - name: Build
+        run: cmake --build build --config Release --parallel
+
+      - name: Upload VST3
+        uses: actions/upload-artifact@v4
+        with:
+          name: PulseDrumSynth-Windows-VST3
+          path: build/PulseDrumSynth_artefacts/Release/VST3/
+
+      - name: Upload Standalone
+        uses: actions/upload-artifact@v4
+        with:
+          name: PulseDrumSynth-Windows-Standalone
+          path: build/PulseDrumSynth_artefacts/Release/Standalone/
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone JUCE
+        run: git clone --depth 1 --branch 7.0.12 https://github.com/juce-framework/JUCE.git
+
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+
+      - name: Build
+        run: cmake --build build -j$(sysctl -n hw.logicalcpu)
+
+      - name: Upload VST3
+        uses: actions/upload-artifact@v4
+        with:
+          name: PulseDrumSynth-macOS-VST3
+          path: build/PulseDrumSynth_artefacts/Release/VST3/
+
+      - name: Upload AU
+        uses: actions/upload-artifact@v4
+        with:
+          name: PulseDrumSynth-macOS-AU
+          path: build/PulseDrumSynth_artefacts/Release/AU/
+
+      - name: Upload Standalone
+        uses: actions/upload-artifact@v4
+        with:
+          name: PulseDrumSynth-macOS-Standalone
+          path: build/PulseDrumSynth_artefacts/Release/Standalone/

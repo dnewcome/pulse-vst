@@ -13,7 +13,7 @@ juce_add_plugin(PulseDrumSynth
     COPY_PLUGIN_AFTER_BUILD TRUE
     PLUGIN_MANUFACTURER_CODE Plse
     PLUGIN_CODE Plds
-    FORMATS VST3 Standalone
+    FORMATS VST3 AU Standalone
     PRODUCT_NAME "PULSE Drum Synth"
 )
 
